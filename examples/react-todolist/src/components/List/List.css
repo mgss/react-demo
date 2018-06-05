@@ -1,0 +1,22 @@
+.items {
+  margin-top: 10px;
+  min-height: 100px;
+}
+.items .placeholder {
+  font-size: 32px;
+  color: rgba(0, 0, 0, .1);
+  text-align: center;
+  line-height: 100px;
+}
+.items .item {
+  font-size: 16px;
+  line-height: 32px;
+  color: #0f0f10;
+  border-bottom: 1px dashed rgba(0, 0, 0, .08);
+}
+
+.items .item .delete {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}

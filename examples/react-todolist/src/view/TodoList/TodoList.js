@@ -11,29 +11,35 @@ class TodoList extends Component{
       todoData: []
     }
   }
-  onSubmitTodo(e){
-    if (e.key === 'Enter') {
-      console.log(e.currentTarget.value())
-    }
+  onSubmitTodo(value){
+    console.log(value)
+    const id = this.state.todoData.length
+    this.setState({
+      todoData: this.state.todoData.concat({
+        id: id,
+        text: value
+      })
+    })
+    console.log(this.state.todoData)
   }
-  onSubmitChange(e){
-    console.log(e)
+  onDeleteTodo(id){
+    console.log(id)
+    this.setState({
+      todoData: this.state.todoData.filter(item=>{
+        return item.id !== id
+      })
+    })
   }
   render() {
-    let todo = this.state.todoData.map((item, index)=>{
-      return (<li className="item" key={ index }>{ item }</li>)
-    })
     return (
       <div className="container">
         <div className="todo-list">
           <div className="form">
-
+            <Input onSubmitTodo={this.onSubmitTodo.bind(this)}/>
           </div>
-          <ul className="items">
-            {
-              this.state.todoData.length!==0 ? todo : <li className="placeholder">暂无事项</li>
-            }
-          </ul>
+          <div className="items">
+            <List todoData={this.state.todoData} onDeleteTodo={this.onDeleteTodo.bind(this)}/>
+          </div>
         </div>
       </div>
     )
